@@ -1,6 +1,14 @@
 #!/usr/bin/python3
 import mysql.connector
 import time
+import math
+
+# 0. Constants
+NUM_ROWS=100
+NUM_INSERTS=10000
+TABLE="users"
+NUM_COLS=10
+TOT_ROWS=NUM_ROWS*NUM_INSERTS
 
 dbconn = mysql.connector.connect(
 host="localhost",
@@ -14,12 +22,6 @@ mycursor = dbconn.cursor()
 def execute_query(query):
   mycursor.execute(query)
 
-# 0. Constants
-NUM_ROWS=1000
-NUM_INSERTS=100
-TABLE="users"
-NUM_COLS=1
-TOT_ROWS=NUM_ROWS*NUM_INSERTS
 # 1. Drop table
 execute_query("drop table if exists " + TABLE)
 
@@ -52,7 +54,7 @@ for insert in range(0,NUM_INSERTS):
   insert_query += ";"
   execute_query(insert_query)
 execute_query("commit")
-elapsed = round(time.time() - start)
+elapsed = math.ceil(time.time() - start)
 
 print("Rows inserted: " + str(TOT_ROWS))
 print("Time elapsed: " + str(elapsed) + " s")
