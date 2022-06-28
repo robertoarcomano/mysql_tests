@@ -31,7 +31,7 @@ for i in range(0,NUM_COLS):
   create_table_query += "name"+str(i+1)+" char(100)"
   if i != NUM_COLS-1:
     create_table_query += ","
-create_table_query += ",primary key(id))"
+create_table_query += ",primary key(id)) engine='myisam'"
 execute_query(create_table_query)
 
 # 3. Delete from table
@@ -59,6 +59,11 @@ elapsed = math.ceil(time.time() - start)
 print("Rows inserted: " + str(TOT_ROWS))
 print("Time elapsed: " + str(elapsed) + " s")
 print("Speed: " + str(round(TOT_ROWS/elapsed)) + " rows/s")
+
+# start = time.time()
+# execute_query("alter table users engine='innodb'")
+# elapsed = math.ceil(time.time() - start)
+# print("Conversion to innodb completed, time elapsed: " + str(elapsed) + " s")
 
 dbconn.close()
 
