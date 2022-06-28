@@ -1,0 +1,2 @@
+1. optimize table
+2. migration from myisam to innodb
