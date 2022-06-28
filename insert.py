@@ -60,10 +60,10 @@ print("Rows inserted: " + str(TOT_ROWS))
 print("Time elapsed: " + str(elapsed) + " s")
 print("Speed: " + str(round(TOT_ROWS/elapsed)) + " rows/s")
 
-# start = time.time()
-# execute_query("alter table users engine='innodb'")
-# elapsed = math.ceil(time.time() - start)
-# print("Conversion to innodb completed, time elapsed: " + str(elapsed) + " s")
+start = time.time()
+execute_query("alter table users engine='innodb'")
+elapsed = math.ceil(time.time() - start)
+print("Conversion to innodb completed, time elapsed: " + str(elapsed) + " s")
 
 dbconn.close()
 
